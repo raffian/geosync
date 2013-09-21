@@ -9,7 +9,6 @@ import org.zmq.base.GeoSyncProxy
 
 import com.raffian.geosync.util.FrameListener
 
-
 class Queue extends GeoSyncProxy implements IAttachedRunnable {
 
 	public Queue(){
