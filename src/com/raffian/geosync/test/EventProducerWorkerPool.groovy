@@ -9,6 +9,11 @@ import org.zeromq.ZMQ.Socket
 
 import com.raffian.geosync.base.GeoSyncBase
 
+/**
+ * To run:
+ * > groovy -cp [classpath] com/raffian/geosync/test/EventProducerWorkerPool.groovy tcp://localhost:5510
+ * Make sure classpath has Groovy and ZeroMq dependencies.
+ */
 public class EventProducerWorkerPool extends GeoSyncBase implements Runnable {
    def WORKERS = 5   
    WorkerPool workerPool
@@ -25,6 +30,7 @@ public class EventProducerWorkerPool extends GeoSyncBase implements Runnable {
    public void run() {
       log( "producer started on: " + publishAddress)
       
+      //send some test events
       for( event in 1..25){    
          workerPool.doTask( 
             new CacheEventTask( "key-${event}", "value-${event}"))
@@ -59,7 +65,7 @@ public class EventProducerWorkerPool extends GeoSyncBase implements Runnable {
       //accessing the outer class just for examples sake,
       //production code should get publishAddress from a config file
       static String publishAddress =
-      EventProducerWorkerPool.publishAddress
+         EventProducerWorkerPool.publishAddress
 
       public CacheEventTask( String... info){
          eventDetails = new ArrayList<String>(Arrays.asList(info))
