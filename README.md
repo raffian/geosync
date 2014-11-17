@@ -1,5 +1,4 @@
 geosync
 =======
 
-
-repo under construction for upcoming article in Oct/2013
+Synchronizes geo-distributed memcached clusters using ZeroMQ sockets.
